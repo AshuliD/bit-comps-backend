@@ -77,16 +77,19 @@ public class GRNService implements GRNServiceI {
         for (GRNaddedEntitiy grNaddedEntitiy : grNaddedEntitiyList) {
             Optional<StockEntitiy> optionalStockEntity = stockRepository.findByItemIDo(grNaddedEntitiy.getItemID());
             Integer totalQty = grnaddedRepository.findSumOfQtyByItemId(grNaddedEntitiy.getItemID());
+
             if (totalQty == null) {
                 totalQty = 0;
             }
             System.out.println(totalQty + " total quantity");
             StockEntitiy newEntity = null;
             if (optionalStockEntity.isPresent()) {
-//            System.out.println(optionalStockEntity.get().getId() + " " + optionalStockEntity.get().getStockItemName() + " found");
+           System.out.println(optionalStockEntity.get().getId() + " " + optionalStockEntity.get().getStockItemName() + " found");
                 newEntity = optionalStockEntity.get();
+                System.out.println(newEntity.getStockItemName());
                 int updatedQty = totalQty;
                 newEntity.setQty(updatedQty);
+                stockRepository.save(newEntity);
             }
         }
 

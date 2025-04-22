@@ -68,6 +68,7 @@ public class StockService implements StockServiceI {
             newEntity = optionalStockEntity.get();
             int updatedQty = totalQty;
             newEntity.setQty(updatedQty);
+            stockRepository.save(newEntity);
         }
         StockEntitiy savedItem = stockRepository.save(newEntity);
         StockDTO stockDTO = stockMapper.toStockDto(savedItem);
