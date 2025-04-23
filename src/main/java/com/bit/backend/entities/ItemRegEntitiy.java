@@ -24,15 +24,19 @@ public class ItemRegEntitiy {
     @Column(name = "material")
     private String material;
 
+    @Column(name = "category")
+    private String category;
+
     public ItemRegEntitiy() {
     }
 
-    public ItemRegEntitiy(Long id, String name, String code, String brand, String material) {
+    public ItemRegEntitiy(Long id, String name, String code, String brand, String material, String category) {
         this.id = id;
         this.name = name;
         this.code = code;
         this.brand = brand;
         this.material = material;
+        this.category = category;
     }
 
     public Long getId() {
@@ -41,6 +45,14 @@ public class ItemRegEntitiy {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getName() {

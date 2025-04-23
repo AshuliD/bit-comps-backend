@@ -72,25 +72,21 @@ public class GRNService implements GRNServiceI {
 
         //delete GRNadded records of the GRNsummary record
         grnaddedRepository.deleteAll(grNaddedEntitiyList);
+        
 
         //need to delete quantity of GRNadded records from stock table
         for (GRNaddedEntitiy grNaddedEntitiy : grNaddedEntitiyList) {
             Optional<StockEntitiy> optionalStockEntity = stockRepository.findByItemIDo(grNaddedEntitiy.getItemID());
-            Integer totalQty = grnaddedRepository.findSumOfQtyByItemId(grNaddedEntitiy.getItemID());
+            int totalQty = Optional.ofNullable(grnaddedRepository.findSumOfQtyByItemId(grNaddedEntitiy.getItemID())).orElse(0);
 
-            if (totalQty == null) {
-                totalQty = 0;
-            }
             System.out.println(totalQty + " total quantity");
-            StockEntitiy newEntity = null;
-            if (optionalStockEntity.isPresent()) {
-           System.out.println(optionalStockEntity.get().getId() + " " + optionalStockEntity.get().getStockItemName() + " found");
-                newEntity = optionalStockEntity.get();
-                System.out.println(newEntity.getStockItemName());
-                int updatedQty = totalQty;
-                newEntity.setQty(updatedQty);
-                stockRepository.save(newEntity);
-            }
+
+            optionalStockEntity.ifPresent(stockEntity -> {
+                System.out.println(stockEntity.getId() + " " + stockEntity.getStockItemName() + " found");
+                System.out.println(stockEntity.getStockItemName());
+                stockEntity.setQty(totalQty);
+                stockRepository.save(stockEntity);
+            });
         }
 
         if (!optionalGRNEntitiy.isPresent()) {

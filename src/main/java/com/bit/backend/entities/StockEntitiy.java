@@ -19,6 +19,8 @@ public class StockEntitiy {
     @Column(name = "qty")
     private int qty;
 
+
+
     public StockEntitiy() {
     }
 

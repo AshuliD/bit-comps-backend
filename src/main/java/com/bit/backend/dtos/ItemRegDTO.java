@@ -9,8 +9,10 @@ public class ItemRegDTO {
     private String code;
     private String brand;
     private String material;
+    private String category;
 
-    public ItemRegDTO(String material, String brand, String code, String name, Long id) {
+    public ItemRegDTO(String category, String material, String brand, String code, String name, Long id) {
+        this.category = category;
         this.material = material;
         this.brand = brand;
         this.code = code;
@@ -19,6 +21,14 @@ public class ItemRegDTO {
     }
 
     public ItemRegDTO() {
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public Long getId() {
