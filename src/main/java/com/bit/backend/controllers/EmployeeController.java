@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/employees")
+@RequestMapping("/employees")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -29,28 +29,28 @@ public class EmployeeController {
     }
 
     // Create Employee REST API
-    @PostMapping
+    @PostMapping("/addEmployee")
     public ResponseEntity<EmployeeDTO> createEmployee(@Valid @RequestBody EmployeeDTO employeeDTO) {
         EmployeeDTO savedEmployee = employeeService.createEmployee(employeeDTO);
         return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
     }
 
     // Get Employee by ID REST API
-    @GetMapping("/{id}")
+    @GetMapping("/getEmp/{id}")
     public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable Long id) {
         EmployeeDTO employeeDTO = employeeService.getEmployeeById(id);
         return ResponseEntity.ok(employeeDTO);
     }
 
     // Get All Employees REST API
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<List<EmployeeDTO>> getAllEmployees() {
         List<EmployeeDTO> employees = employeeService.getAllEmployees();
         return ResponseEntity.ok(employees);
     }
 
     // Update Employee REST API
-    @PutMapping("/{id}")
+    @PutMapping("/updateEmp/{id}")
     public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Long id,
                                                       @Valid @RequestBody EmployeeDTO employeeDTO) {
         EmployeeDTO updatedEmployee = employeeService.updateEmployee(id, employeeDTO);
@@ -58,9 +58,9 @@ public class EmployeeController {
     }
 
     // Delete Employee REST API
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable Long id) {
-        employeeService.deleteEmployee(id);
-        return ResponseEntity.ok("Employee deleted successfully. ID: " + id);
+    @DeleteMapping("/deleteEmp/{id}")
+    public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable Long id) {
+      EmployeeDTO employeeDTO =   employeeService.deleteEmployee(id);
+        return ResponseEntity.ok(employeeDTO);
     }
 }

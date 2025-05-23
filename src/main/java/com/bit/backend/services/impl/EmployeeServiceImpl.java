@@ -87,9 +87,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
-    public void deleteEmployee(Long id) {
+    public EmployeeDTO deleteEmployee(Long id) {
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee", "id", id));
         employeeRepository.delete(employee);
+        return employeeMapper.toDto(employee);
     }
 }

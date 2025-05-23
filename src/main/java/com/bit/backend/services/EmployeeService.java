@@ -45,5 +45,5 @@ public interface EmployeeService {
      * @param id the ID of the employee to delete
      * @throws com.bit.backend.exceptions.ResourceNotFoundException if no employee is found with the given ID
      */
-    void deleteEmployee(Long id);
+    EmployeeDTO deleteEmployee(Long id);
 }

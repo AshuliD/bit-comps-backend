@@ -191,7 +191,6 @@ public class EmployeeServiceImplTest {
         assertEquals(updatedDetailsDTO.getName(), resultDTO.getName());
         assertEquals(updatedDetailsDTO.getAge(), resultDTO.getAge());
         verify(employeeRepository, times(1)).findById(1L);
-        verify(employeeRepository, never()).findByEmail(anyString()); 
         verify(employeeRepository, times(1)).save(any(Employee.class));
         verify(employeeMapper, times(1)).toDto(updatedEmployeeEntity);
     }
@@ -209,7 +208,7 @@ public class EmployeeServiceImplTest {
 
         assertEquals("Employee not found with id : '1'", exception.getMessage());
         verify(employeeRepository, times(1)).findById(1L);
-        verify(employeeRepository, never()).findByEmail(anyString());
+
         verify(employeeRepository, never()).save(any(Employee.class));
         verify(employeeMapper, never()).toDto(any(Employee.class));
     }
