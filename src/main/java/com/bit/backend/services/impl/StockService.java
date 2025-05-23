@@ -88,6 +88,8 @@ public class StockService implements StockServiceI {
         //save from repository
         StockEntitiy savedItem = stockRepository.save(stockEntitiy);
 
+//        stockRepository.
+
         //return type is dto and again convert from entity to dto
         StockDTO savedDto = stockMapper.toStockDto(savedItem);
         return savedDto;
