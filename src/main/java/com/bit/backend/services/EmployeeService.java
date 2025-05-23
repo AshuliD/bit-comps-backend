@@ -1,6 +1,6 @@
-package com.example.bitcomps.employee.service;
+package com.bit.backend.services; // Updated package
 
-import com.example.bitcomps.employee.dto.EmployeeDTO;
+import com.bit.backend.dtos.EmployeeDTO; // Updated import
 import java.util.List;
 
 public interface EmployeeService {
@@ -18,7 +18,7 @@ public interface EmployeeService {
      *
      * @param id the ID of the employee to retrieve
      * @return the DTO of the found employee
-     * @throws com.example.bitcomps.employee.exception.ResourceNotFoundException if no employee is found with the given ID
+     * @throws com.bit.backend.exceptions.ResourceNotFoundException if no employee is found with the given ID
      */
     EmployeeDTO getEmployeeById(Long id);
 
@@ -35,7 +35,7 @@ public interface EmployeeService {
      * @param id          the ID of the employee to update
      * @param employeeDTO the DTO containing the updated details of the employee
      * @return the DTO of the updated employee
-     * @throws com.example.bitcomps.employee.exception.ResourceNotFoundException if no employee is found with the given ID
+     * @throws com.bit.backend.exceptions.ResourceNotFoundException if no employee is found with the given ID
      */
     EmployeeDTO updateEmployee(Long id, EmployeeDTO employeeDTO);
 
@@ -43,7 +43,7 @@ public interface EmployeeService {
      * Deletes an employee by their ID.
      *
      * @param id the ID of the employee to delete
-     * @throws com.example.bitcomps.employee.exception.ResourceNotFoundException if no employee is found with the given ID
+     * @throws com.bit.backend.exceptions.ResourceNotFoundException if no employee is found with the given ID
      */
     void deleteEmployee(Long id);
 }

@@ -1,4 +1,4 @@
-package com.example.bitcomps.employee.exception;
+package com.bit.backend.exceptions; // Updated package
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

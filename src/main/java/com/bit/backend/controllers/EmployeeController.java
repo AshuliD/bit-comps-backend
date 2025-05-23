@@ -1,7 +1,7 @@
-package com.example.bitcomps.employee.controller;
+package com.bit.backend.controllers; // Updated package
 
-import com.example.bitcomps.employee.dto.EmployeeDTO;
-import com.example.bitcomps.employee.service.EmployeeService;
+import com.bit.backend.dtos.EmployeeDTO; // Updated import
+import com.bit.backend.services.EmployeeService; // Updated import
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
